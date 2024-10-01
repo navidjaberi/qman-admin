@@ -2,10 +2,10 @@
   <div>
     <v-snackbar
       v-model="showAlertVar"
-      :color="alertProperty.color"
       :timeout="alert.timeout"
       position="fixed"
       content-class="top-0 !bottom-unset border-2 !border-success-dark border-solid"
+      :content-class="[alertProperty.color]"
       class="w-4/5 mx-auto"
       flat
       height="72px"
@@ -44,25 +44,25 @@
 <script setup>
 const { alert, hideAlert, showAlertVar } = useAlert();
 const alertProperty = computed(() => {
-  if ((alert.value.type == "success")) {
+  if (alert.value.type == "success") {
     return {
-      color: "success-light",
+      color: "!bg-success-light",
       border: "!border-success-dark",
       text: "!text-success-dark",
       icon: "solar:check-circle-outline",
       message: "با موفقیت انجام شد.",
     };
-  } else if ((alert.value.type == "warning")) {
+  } else if (alert.value.type == "warning") {
     return {
-      color: "warning-light",
+      color: "!bg-warning-light",
       border: "!border-warning-dark",
       text: "!text-warning-dark",
       icon: "ph:warning-circle",
       message: "مشکلی رخ داده است! لطفاً اطلاعات را بررسی کنید.",
     };
-  } else if ((alert.value.type == "error")) {
+  } else if (alert.value.type == "error") {
     return {
-      color: "error-light",
+      color: "!bg-error-light",
       border: "!border-error-dark",
       text: "!text-error-dark",
       icon: "solar:close-circle-linear",
