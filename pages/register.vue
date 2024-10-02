@@ -1,31 +1,28 @@
 <template>
   <div class="default-container text-center">
-    <h1 class="text-primary-dark mt-40">به پنل مدیریت کیومن خوش آمدید</h1>
-    <div class="mt-16">
-      <h4 class="text-[#979797]">
-        برای ورود شماره تلفن همراه خود را وارد نمائید
-      </h4>
-      <v-form class="mt-10 px-5">
-        <div class="px-20">
-          <v-text-field
-            label="شماره همراه خود را وارد نمائید"
-            variant="outlined"
-            density="compact"
-          ></v-text-field>
-        </div>
-        <BaseBtn text="ورود" class="mt-24" />
-        <v-btn variant="text" color="primary-main" class="mt-6"
-          >ورود با رمز عبور</v-btn
-        >
-      </v-form>
+    <div class="mt-40">
+      <h1 class="text-primary-dark">به پنل مدیریت کیومن خوش آمدید</h1>
+      <component
+        :is="loginNumber ? tabs[currentTab] : tabs[2]"
+        @login="currentTab++"
+        @loginPassword="loginNumber = false"
+        @loginNumber="loginNumber=true"
+        @editPhoneNum="currentTab=0"
+        @loggedIn="$router.push('/dashboard')"
+      />
     </div>
     <div>
-<v-img src="/register-logo.png" width="200" class="mx-auto my-10"></v-img>
-
+      <v-img src="/register-logo.png" width="200" class="mx-auto my-10"></v-img>
     </div>
   </div>
 </template>
-
-<script setup></script>
+<script setup>
+import RegisterLoginPassword from "~/components/Register/LoginPassword.vue";
+import RegisterLoginNumber from "~/components/Register/LoginNumber.vue";
+import RegisterOtp from "~/components/Register/Otp.vue";
+const tabs = ref([RegisterLoginNumber, RegisterOtp, RegisterLoginPassword]);
+const currentTab = ref(0);
+const loginNumber = ref(true);
+</script>
 
 <style></style>

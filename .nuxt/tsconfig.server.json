@@ -101,6 +101,9 @@
       "public/*": [
         "../public/*"
       ],
+      "pinia": [
+        "../node_modules/pinia/dist/pinia"
+      ],
       "#vue-router": [
         "./vue-router"
       ],
@@ -120,6 +123,7 @@
     "../node_modules/@unocss/nuxt/runtime/server",
     "../node_modules/@vee-validate/nuxt/runtime/server",
     "../node_modules/@nuxt/icon/runtime/server",
+    "../node_modules/@pinia/nuxt/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",

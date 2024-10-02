@@ -1,5 +1,5 @@
 import { colors } from "./colors";
-
+import { twColors } from "./utils/tw-colors";
 // setup tailwind config
 module.exports = {
   /* Warning
@@ -11,7 +11,7 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors:colors,
+    colors: { ...colors, ...twColors },
   },
   variants: {
     extend: {},

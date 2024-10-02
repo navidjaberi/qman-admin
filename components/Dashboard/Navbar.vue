@@ -1,0 +1,76 @@
+<template>
+  <v-list density="compact" class="-mr-4 h-full">
+    <v-list-item
+      :to="item.link"
+      v-for="(item, index) in items"
+      :key="item.id"
+      :value="item.title"
+      class="border border-gray-300 rounded-lg w-11/12 mb-3 !text-gray-500"
+      active-class="!bg-[#E5F8F0]"
+      :height="44"
+     
+    >
+      <template #prepend>
+        <Icon :name="item.icon" size="1.5rem" class="mr-5 ml-3" />
+      </template>
+      <template #title>
+        <p class="text-[13px] !font-bold">
+          {{ item.title }}
+        </p>
+      </template>
+    </v-list-item>
+    <div class="h-[30%] flex align-end">
+      <v-list-item
+        class="border !border-red-500 !text-red-500 !bg-red-50 rounded-lg w-11/12 mb-3"
+        :height="44"
+      >
+        <template #prepend>
+          <Icon name="ic:baseline-log-out" size="1.5rem" class="mr-5" />
+        </template>
+        <template #title>
+          <p class="text-[13px] font-semibold">خروج</p>
+        </template>
+      </v-list-item>
+    </div>
+  </v-list>
+</template>
+<script setup lang="ts">
+interface Items {
+  title: string;
+  id: number;
+  link: string;
+  icon: string;
+}
+const route = useRoute();
+const items = ref<Items[]>([
+  {
+    title: "پیشخوان",
+    id: 1,
+    tab: "",
+    icon: "icon-park-outline:all-application",
+  },
+  {
+    title: "تیکت",
+    id: 2,
+    tab: "",
+    icon: "fluent:chat-bubbles-question-32-regular",
+  },
+  {
+    title: "تراکنش های مالی",
+    id: 3,
+    tab: "",
+    icon: "solar:wallet-money-outline",
+  },
+  { title: "مدیران", id: 8, tab: "", icon: "solar:shield-user-outline" },
+  {
+    title: "نظرات",
+    id: 7,
+    tab: "",
+    icon: "solar:clipboard-text-outline",
+  },
+  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:building" },
+  { title: "حساب کاربری", id: 6, tab: "", icon: "solar:user-linear" },
+]);
+</script>
+
+<style></style>

@@ -2,16 +2,13 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   ssr: false,
   app: {
     // head
     head: {
-
-      script: [
-
-      ],
+      script: [],
       title: "qman pannel",
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -126,8 +123,10 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['vuetify-nuxt-module', // uno css
-    "@unocss/nuxt", // nuxt-icon
+  modules: [
+    // uno css
+    "vuetify-nuxt-module", // nuxt-icon
+    "@unocss/nuxt",
     [
       "@vee-validate/nuxt",
       {
@@ -141,7 +140,10 @@ export default defineNuxtConfig({
           ErrorMessage: "VErrorMessage",
         },
       },
-    ], "@nuxt/icon"],
+    ],
+    "@nuxt/icon",
+    "@pinia/nuxt",
+  ],
   devServer: {
     port: 3008,
     // host:'0.0.0.0'
@@ -180,7 +182,6 @@ export default defineNuxtConfig({
     },
   },
   icon: {
-    mode: 'svg'
-  }
-
-})
+    mode: "svg",
+  },
+});

@@ -1,8 +1,11 @@
 {
-  "name": "mizoni",
+  "name": "Qman pannel",
   "private": true,
   "version": "1.0.0",
-  "author": "Parsa Jiravand",
+  "author": "Navid Jaberi",
+  "overrides": {
+    "vue": "latest"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -12,6 +15,7 @@
   },
   "dependencies": {
     "@nuxt/icon": "^1.5.1",
+    "@pinia/nuxt": "^0.5.5",
     "@vee-validate/nuxt": "^4.13.2",
     "nuxt": "^3.13.0",
     "universal-cookie": "^7.2.0",
