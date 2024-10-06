@@ -1,14 +1,13 @@
 <template>
   <v-list density="compact" class="-mr-4 h-full">
     <v-list-item
-      :to="item.link"
+      :to="item.tab"
       v-for="(item, index) in items"
       :key="item.id"
       :value="item.title"
-      class="border border-gray-300 rounded-lg w-11/12 mb-3 !text-gray-500"
+      class="  w-full mb-3 !text-gray-500"
       active-class="!bg-[#E5F8F0]"
       :height="44"
-     
     >
       <template #prepend>
         <Icon :name="item.icon" size="1.5rem" class="mr-5 ml-3" />
@@ -19,16 +18,16 @@
         </p>
       </template>
     </v-list-item>
-    <div class="h-[30%] flex align-end">
+    <div class="h-[30%] flex align-end ">
       <v-list-item
-        class="border !border-red-500 !text-red-500 !bg-red-50 rounded-lg w-11/12 mb-3"
+        class="!text-red-500 rounded-lg w-11/12 mb-3"
         :height="44"
       >
         <template #prepend>
           <Icon name="ic:baseline-log-out" size="1.5rem" class="mr-5" />
         </template>
         <template #title>
-          <p class="text-[13px] font-semibold">خروج</p>
+          <p class="text-[13px] font-semibold mx-2">خروج</p>
         </template>
       </v-list-item>
     </div>
@@ -38,8 +37,8 @@
 interface Items {
   title: string;
   id: number;
-  link: string;
   icon: string;
+  tab: string;
 }
 const route = useRoute();
 const items = ref<Items[]>([
@@ -68,7 +67,7 @@ const items = ref<Items[]>([
     tab: "",
     icon: "solar:clipboard-text-outline",
   },
-  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:building" },
+  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:buildings" },
   { title: "حساب کاربری", id: 6, tab: "", icon: "solar:user-linear" },
 ]);
 </script>

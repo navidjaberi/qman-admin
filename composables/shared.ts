@@ -47,6 +47,19 @@ export const useShared = () => {
     }
     return filter;
   };
+  const getDay = (year, month, day) => {
+    const date = new Date(year, month, day);
+    const days = [
+      "شنبه",
+      "یکشنبه",
+      "دوشنبه",
+      "سه شنبه",
+      "چهارشنبه",
+      "پنجشنبه",
+      "جمعه",
+    ];
+    return days[date.getDay()];
+  };
   const copyToClipboard = (value: string) => {
     if (!value) return;
     // with navigators
@@ -125,22 +138,7 @@ export const useShared = () => {
     const persianTime = newDate.toLocaleTimeString("fa-IR");
     return `${persianDate} | ${persianTime}`;
   };
-  function generatePersianNumArray(start: number, end: number, text?: string) {
-    const result = [];
-    const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-    for (let i = start; i <= end; i++) {
-      let persianNumber = String(i)
-        .split("")
-        .map((digit) => persianDigits[Number(digit)])
-        .join("");
-      if (text) {
-        result.push( persianNumber + '' + text);
-      } else {
-        result.push(persianNumber);
-      }
-    }
-    return result;
-  }
+
   function useToEnglishDigits(str: string | number): string {
     var e = "۰".charCodeAt(0);
     str = str.toString().replace(/[۰-۹]/g, function (t: string): any {
@@ -151,6 +149,14 @@ export const useShared = () => {
       return t.charCodeAt(0) - e;
     });
     return str;
+  }
+  function toFarsiNumber(n) {
+    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    return n
+      .toString()
+      .split('')
+      .map(x => farsiDigits[x])
+      .join('');
   }
   return {
     header,
@@ -167,7 +173,8 @@ export const useShared = () => {
     convertPersianNumberToEnglish,
     replaceNewLine,
     toPersianDateTime,
-    generatePersianNumArray,
-    useToEnglishDigits
+    getDay,
+    useToEnglishDigits,
+    toFarsiNumber
   };
 };
