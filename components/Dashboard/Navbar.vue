@@ -1,16 +1,17 @@
 <template>
-  <v-list density="compact" class="-mr-4 h-full">
+  <v-list density="compact" class="-mr-4 h-full !mx-4">
     <v-list-item
       :to="item.tab"
       v-for="(item, index) in items"
       :key="item.id"
-      :value="item.title"
-      class="  w-full mb-3 !text-gray-500"
-      active-class="!bg-[#E5F8F0]"
+      :value="item.value"
+      class="  w-full mb-3 !text-gray-500 !rounded-md"
+      active-class="!bg-primary-main !text-white"
       :height="44"
+      :active="item.value === props.value"
     >
       <template #prepend>
-        <Icon :name="item.icon" size="1.5rem" class="mr-5 ml-3" />
+        <Icon :name="item.icon" size="1.5rem" class=" ml-3" />
       </template>
       <template #title>
         <p class="text-[13px] !font-bold">
@@ -39,7 +40,11 @@ interface Items {
   id: number;
   icon: string;
   tab: string;
+  value:string;
 }
+const props=defineProps({
+  value:String,
+})
 const route = useRoute();
 const items = ref<Items[]>([
   {
@@ -47,28 +52,32 @@ const items = ref<Items[]>([
     id: 1,
     tab: "",
     icon: "icon-park-outline:all-application",
+    value:'dashboard'
   },
   {
     title: "تیکت",
     id: 2,
     tab: "",
     icon: "fluent:chat-bubbles-question-32-regular",
+    value:'ticket'
   },
   {
     title: "تراکنش های مالی",
     id: 3,
     tab: "",
     icon: "solar:wallet-money-outline",
+    value:''
   },
-  { title: "مدیران", id: 8, tab: "", icon: "solar:shield-user-outline" },
+  { title: "مدیران", id: 8, tab: "", icon: "solar:shield-user-outline" , value:''},
   {
     title: "نظرات",
     id: 7,
     tab: "",
     icon: "solar:clipboard-text-outline",
+    value:''
   },
-  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:buildings" },
-  { title: "حساب کاربری", id: 6, tab: "", icon: "solar:user-linear" },
+  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:buildings", value:'' },
+  { title: "حساب کاربری", id: 6, tab: "", icon: "solar:user-linear", value:'' },
 ]);
 </script>
 
