@@ -1,24 +1,6 @@
 export const useShared = () => {
   const { showAlert } = useAlert();
 
-  const header = useState(
-    "header",
-    (): {
-      title: string;
-      hasBack: boolean;
-      hideActions: boolean;
-      hideBottomNav: boolean;
-      customBackPath: string;
-    } => {
-      return {
-        title: "test",
-        hasBack: false,
-        hideActions: false,
-        hideBottomNav: false,
-        customBackPath: "",
-      };
-    }
-  );
 
   const years = Array.from({ length: 100 }, (_, i) => 1400 - i);
   const months = [
@@ -159,7 +141,7 @@ export const useShared = () => {
       .join('');
   }
   return {
-    header,
+   
     years,
     months,
     days,

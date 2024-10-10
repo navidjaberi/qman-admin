@@ -5,13 +5,14 @@
       v-for="(item, index) in items"
       :key="item.id"
       :value="item.value"
-      class="  w-full mb-3 !text-gray-500 !rounded-md"
+      class="w-full mb-3 !text-gray-500 !rounded-md"
       active-class="!bg-primary-main !text-white"
       :height="44"
-      :active="item.value === props.value"
+      :active="item.value===props.value"
+      @click="activeItemClick(item.value)"
     >
       <template #prepend>
-        <Icon :name="item.icon" size="1.5rem" class=" ml-3" />
+        <Icon :name="item.icon" size="1.5rem" class="ml-3" />
       </template>
       <template #title>
         <p class="text-[13px] !font-bold">
@@ -19,11 +20,8 @@
         </p>
       </template>
     </v-list-item>
-    <div class="h-[30%] flex align-end ">
-      <v-list-item
-        class="!text-red-500 rounded-lg w-11/12 mb-3"
-        :height="44"
-      >
+    <div class="h-[30%] flex align-end">
+      <v-list-item class="!text-red-500 rounded-lg w-11/12 mb-3" :height="44">
         <template #prepend>
           <Icon name="ic:baseline-log-out" size="1.5rem" class="mr-5" />
         </template>
@@ -40,11 +38,12 @@ interface Items {
   id: number;
   icon: string;
   tab: string;
-  value:string;
+  value: string;
 }
-const props=defineProps({
-  value:String,
-})
+const props = defineProps({
+  value: String,
+});
+const emit = defineEmits(["activeItem"]);
 const route = useRoute();
 const items = ref<Items[]>([
   {
@@ -52,33 +51,48 @@ const items = ref<Items[]>([
     id: 1,
     tab: "",
     icon: "icon-park-outline:all-application",
-    value:'dashboard'
+    value: "dashboard",
   },
   {
     title: "تیکت",
     id: 2,
     tab: "",
     icon: "fluent:chat-bubbles-question-32-regular",
-    value:'ticket'
+    value: "ticket",
   },
   {
     title: "تراکنش های مالی",
     id: 3,
     tab: "",
     icon: "solar:wallet-money-outline",
-    value:''
+    value: "",
   },
-  { title: "مدیران", id: 8, tab: "", icon: "solar:shield-user-outline" , value:''},
+  {
+    title: "مدیران",
+    id: 8,
+    tab: "",
+    icon: "solar:shield-user-outline",
+    value: "",
+  },
   {
     title: "نظرات",
     id: 7,
     tab: "",
     icon: "solar:clipboard-text-outline",
-    value:''
+    value: "",
   },
-  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:buildings", value:'' },
-  { title: "حساب کاربری", id: 6, tab: "", icon: "solar:user-linear", value:'' },
+  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:buildings", value: "" },
+  {
+    title: "حساب کاربری",
+    id: 6,
+    tab: "",
+    icon: "solar:user-linear",
+    value: "",
+  },
 ]);
+const activeItemClick = (val: string) => {
+  emit("activeItem", val);
+};
 </script>
 
 <style></style>
