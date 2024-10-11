@@ -26,17 +26,41 @@
         <DashboardTabsMain />
       </v-tabs-window-item>
       <v-tabs-window-item value="ticket" class="mt-4 px-5">
-        <DashboardTabsTicket />
+        <component
+          :is="
+            ticketAllTab ? DashboardTabsTicketAll : DashboardTabsTicketSingle
+          "
+          @view-ticket="viewTicket"
+          :tickets="ticket"
+          :singleTicket="singleTicket"
+        />
       </v-tabs-window-item>
     </v-tabs-window>
   </div>
 </template>
 
 <script setup>
+import DashboardTabsTicketAll from "@/components/Dashboard/Tabs/Ticket/TicketAll.vue";
+import DashboardTabsTicketSingle from "@/components/Dashboard/Tabs/Ticket/TicketSingle.vue";
+import { useTicketStore } from "~/store/ticket";
+const ticketAllTab = ref(true);
 const currentTab = ref("dashboard");
-const getActiveItem=(i)=>{
-  currentTab.value=i
-}
+const singleTicket = ref({});
+const getActiveItem = (i) => {
+  currentTab.value = i;
+};
+const { getTickets } = useTicketStore();
+const ticket = computed(() => {
+  return getTickets;
+});
+const viewTicket = (id) => {
+  ticketAllTab.value = false;
+  const findSingleTicket = ticket.value.find((i) => {
+    return i.ticketId === id;
+  });
+
+  singleTicket.value = findSingleTicket;
+};
 // const activeTab = ref("ticket");
 // watch(currentTab, (newX) => {
 //   activeTab.value = newX;

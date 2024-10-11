@@ -5,6 +5,7 @@
     density="compact"
     :class="[props.class]"
     @click="clickHandler"
+    :disabled="disable"
     >{{ props.text }}</v-btn
   >
 </template>
@@ -13,6 +14,7 @@
 const props = defineProps({
   text: String,
   class: String,
+  disable: Boolean,
 });
 const emit = defineEmits(["clickHandler"]);
 const clickHandler = () => {

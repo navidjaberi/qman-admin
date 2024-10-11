@@ -29,7 +29,6 @@
               <v-card
                 max-width="300"
                 width="200"
-      
                 color="#EFF2FF"
                 class="!text-sm pa-3"
                 flat
@@ -47,13 +46,13 @@
                     />
                   </div>
                 </div>
-                <v-form class="mt-5 ">
+                <v-form class="mt-5">
                   <div>
                     <v-select
                       label="انتخاب کنید"
                       variant="outlined"
                       density="compact"
-                      :items="['نام مجموعه','تاریخ','وضعیت']"
+                      :items="['نام مجموعه', 'تاریخ', 'وضعیت']"
                       color="#979797"
                       class="!text-[#979797]"
                       hide-details
@@ -69,7 +68,7 @@
                       hide-details
                     ></v-text-field>
                   </div>
-                  <BaseBtn text="جستجو" class="mt-5" @clickHandler="login" />
+                  <BaseBtn text="جستجو" class="mt-5" />
                 </v-form>
               </v-card>
             </v-menu>
@@ -101,22 +100,24 @@
       <v-divider thickness="2" class="mx-6" />
       <div
         class="grid grid-cols-8 text-center px-6 py-1 mt-4 place-items-center"
-        v-for="i in 8"
+        v-for="i in props.tickets"
+        :key="i.ticketId"
       >
         <v-checkbox hide-details class="text-gray-600" />
-        <p>9787</p>
-        <p>کافه جابری</p>
+        <p>{{ i.cafeId }}</p>
+        <p>{{ i.name }}</p>
         <div class="bg-[#FFDAE1] w-full rounded-md">
-          <p class="font-regular py-1 text-error-dark">مالی</p>
+          <p class="font-regular py-1 text-error-dark">{{ i.status }}</p>
         </div>
-        <p>۱۴۰۳/۰۵/۲۲</p>
-        <p>۱۴:۳۳</p>
-        <p>989652652654</p>
+        <p>{{ i.date }}</p>
+        <p>{{ i.time }}</p>
+        <p>{{ i.ticketId }}</p>
         <v-btn
           variant="outlined"
           color="primary-main"
           class="w-5 !mx-auto"
           size="small"
+          @click="ticketView(i.ticketId)"
         >
           <Icon name="solar:eye-outline" size="1.5rem"></Icon>
         </v-btn>
@@ -141,10 +142,23 @@
     </BaseTable>
   </div>
 </template>
-
-<script setup>
+<script setup lang="ts">
+interface Tickets {
+  cafeId: number;
+  name: string;
+  status: string;
+  date: string;
+  time: string;
+  ticketId: number;
+}
+const props = defineProps<{
+  tickets: Tickets[];
+}>();
+const emit = defineEmits(["viewTicket"]);
 const page = ref(1);
 const menu = ref(false);
+const ticketView = (id: number) => {
+  emit("viewTicket", id);
+};
 </script>
-
 <style></style>
