@@ -9,7 +9,7 @@ console.warn(
 );
 </script>
 <template>
-<BaseAlert/>
+
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

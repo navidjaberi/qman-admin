@@ -100,7 +100,7 @@
       <v-divider thickness="2" class="mx-6" />
       <div
         class="grid grid-cols-8 text-center px-6 py-1 mt-4 place-items-center"
-        v-for="i in props.tickets"
+        v-for="i in ticket"
         :key="i.ticketId"
       >
         <v-checkbox hide-details class="text-gray-600" />
@@ -143,22 +143,16 @@
   </div>
 </template>
 <script setup lang="ts">
-interface Tickets {
-  cafeId: number;
-  name: string;
-  status: string;
-  date: string;
-  time: string;
-  ticketId: number;
-}
-const props = defineProps<{
-  tickets: Tickets[];
-}>();
-const emit = defineEmits(["viewTicket"]);
+import { useTicketStore } from "~/store/ticket";
+const { getTickets } = useTicketStore();
+const router = useRouter();
 const page = ref(1);
+const ticket = computed(() => {
+  return getTickets;
+});
 const menu = ref(false);
-const ticketView = (id: number) => {
-  emit("viewTicket", id);
+const ticketView = (i: number) => {
+  router.push(`/ticket/${i}`);
 };
 </script>
 <style></style>

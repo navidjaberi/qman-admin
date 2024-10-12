@@ -1,70 +1,94 @@
 <template>
-  <div>
-    <div>
-      <v-navigation-drawer
-        location="right"
-        :elevation="5"
-        class="!fixed"
-        :width="264"
-        permanent
+  <base-layout title="پیشخوان" />
+  <div class="flex mt-30 w-full mb-10">
+    <div class="basis-3/12">
+      <div
+        class="border-1 border-black border-solid bg-success-light rounded-lg p-3"
       >
-        <div class="h-[75%]">
-          <div class="w-full text-center py-3 mt-2">
-            <v-img src="/dashboard-logo.png" width="70" class="mx-auto"></v-img>
-          </div>
-          <DashboardNavbar
-            direction="vertical"
-            class="my-2 !mt-10 text-black"
-            :value="currentTab"
-            @active-item="getActiveItem"
-          />
+        <div class="flex justify-between">
+          <p class="font-regular">مجموع فروش ماه گذشته</p>
+          <Icon name="hugeicons:money-add-01" size="1.5rem" />
         </div>
-      </v-navigation-drawer>
+        <p class="text-left mt-12">
+          <span class="font-semibold">18.650.000</span> تومان
+        </p>
+      </div>
+      <div
+        class="border-1 border-gray-200 bg-white border-solid rounded-lg p-3 mt-10 text-primary-main"
+      >
+        <div class="flex justify-between">
+          <p class="font-bold text-lg">تیکت</p>
+          <Icon name="mdi:comment-question-outline" size="1.8rem" />
+        </div>
+        <p class="text-right mt-12">
+          <span class="font-semibold">4</span> جدید
+        </p>
+      </div>
+      <div
+        class="border-1 border-gray-200 bg-white border-solid rounded-lg p-3 mt-10 text-primary-main"
+      >
+        <div class="flex justify-between">
+          <p class="font-bold text-lg">کسب و کار ها</p>
+          <Icon name="ph:buildings" size="1.8rem" />
+        </div>
+        <p class="text-right mt-12">
+          <span class="font-semibold">143</span> مجموعه
+        </p>
+      </div>
+      <div
+        class="border-1 border-gray-200 bg-white border-solid rounded-lg p-3 mt-10 text-primary-main"
+      >
+        <div class="flex justify-between">
+          <p class="font-bold text-lg">مدیران</p>
+          <Icon name="pepicons-pencil:person-circle" size="1.8rem" />
+        </div>
+        <div class="flex text-black align-center gap-3 mt-4" v-for="i in 3">
+          <div class="relative">
+            <v-avatar size="40px" class="!border-2 !border-success-main">
+              <v-img
+                alt="Avatar"
+                src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+              ></v-img>
+            </v-avatar>
+            <div
+              class="size-2 rounded-full bg-success-main absolute left-0 bottom-1"
+            />
+          </div>
+          <p>علیار یاری</p>
+        </div>
+      </div>
     </div>
-    <v-tabs-window v-model="currentTab" class="!mr-70">
-      <v-tabs-window-item value="dashboard" class="mt-4 px-5">
-        <DashboardTabsMain />
-      </v-tabs-window-item>
-      <v-tabs-window-item value="ticket" class="mt-4 px-5">
-        <component
-          :is="
-            ticketAllTab ? DashboardTabsTicketAll : DashboardTabsTicketSingle
-          "
-          @view-ticket="viewTicket"
-          :tickets="ticket"
-          :singleTicket="singleTicket"
-        />
-      </v-tabs-window-item>
-    </v-tabs-window>
+    <div class="basis-9/12 px-8">
+      <BaseTable title="آخرین پرداختی ها">
+        <div class="grid grid-cols-7 text-center px-6 py-5 text-gray-400">
+          <p>شناسه مجموعه</p>
+          <p>نام مجموعه</p>
+          <p>وضعیت پرداخت</p>
+          <p>مبلغ</p>
+          <p>زمان پرداخت</p>
+          <p>مدت اشتراک</p>
+          <p>شماره رهگیری</p>
+        </div>
+        <v-divider thickness="2" class="mx-6" />
+        <div class="grid grid-cols-7 text-center px-6 py-1 mt-4" v-for="i in 5">
+          <p>9787</p>
+          <p>کافه جابری</p>
+          <div>
+            <p
+              class="bg-success-light font-regular py-1 text-success-dark rounded-md"
+            >
+              موفق
+            </p>
+          </div>
+          <p>1.200.000</p>
+          <p class="text-xs">13:30 - 03-07-01</p>
+          <p>3 ماهه</p>
+          <p>9878654512</p>
+        </div>
+      </BaseTable>
+    </div>
   </div>
 </template>
-
-<script setup>
-import DashboardTabsTicketAll from "@/components/Dashboard/Tabs/Ticket/TicketAll.vue";
-import DashboardTabsTicketSingle from "@/components/Dashboard/Tabs/Ticket/TicketSingle.vue";
-import { useTicketStore } from "~/store/ticket";
-const ticketAllTab = ref(true);
-const currentTab = ref("dashboard");
-const singleTicket = ref({});
-const getActiveItem = (i) => {
-  currentTab.value = i;
-};
-const { getTickets } = useTicketStore();
-const ticket = computed(() => {
-  return getTickets;
-});
-const viewTicket = (id) => {
-  ticketAllTab.value = false;
-  const findSingleTicket = ticket.value.find((i) => {
-    return i.ticketId === id;
-  });
-
-  singleTicket.value = findSingleTicket;
-};
-// const activeTab = ref("ticket");
-// watch(currentTab, (newX) => {
-//   activeTab.value = newX;
-// });
-</script>
+<script setup></script>
 
 <style></style>

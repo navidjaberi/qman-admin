@@ -8,7 +8,7 @@
       class="w-full mb-3 !text-gray-500 !rounded-md"
       active-class="!bg-primary-main !text-white"
       :height="44"
-      :active="item.value===props.value"
+      :active="route.path.includes(item.tab)"
       @click="activeItemClick(item.value)"
     >
       <template #prepend>
@@ -43,49 +43,51 @@ interface Items {
 const props = defineProps({
   value: String,
 });
+
 const emit = defineEmits(["activeItem"]);
 const route = useRoute();
+
 const items = ref<Items[]>([
   {
     title: "پیشخوان",
     id: 1,
-    tab: "",
+    tab: "/dashboard",
     icon: "icon-park-outline:all-application",
     value: "dashboard",
   },
   {
     title: "تیکت",
     id: 2,
-    tab: "",
+    tab: "/ticket",
     icon: "fluent:chat-bubbles-question-32-regular",
     value: "ticket",
   },
   {
     title: "تراکنش های مالی",
     id: 3,
-    tab: "",
+    tab: "/finance",
     icon: "solar:wallet-money-outline",
     value: "",
   },
   {
     title: "مدیران",
     id: 8,
-    tab: "",
+    tab: "/management",
     icon: "solar:shield-user-outline",
     value: "",
   },
   {
     title: "نظرات",
     id: 7,
-    tab: "",
+    tab: "/comments",
     icon: "solar:clipboard-text-outline",
     value: "",
   },
-  { title: "کسب و کارها", id: 5, tab: "", icon: "ph:buildings", value: "" },
+  { title: "کسب و کارها", id: 5, tab: "/businesses", icon: "ph:buildings", value: "" },
   {
     title: "حساب کاربری",
     id: 6,
-    tab: "",
+    tab: "/user",
     icon: "solar:user-linear",
     value: "",
   },
