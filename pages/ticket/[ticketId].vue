@@ -24,7 +24,6 @@
                 تغییر وضعیت تیکت
               </v-btn>
             </template>
-
             <v-card width="145" color="#EFF2FF" class="!text-sm pa-3" flat>
               <div>
                 <v-btn-toggle
@@ -160,8 +159,8 @@ const ticket = computed(() => {
 });
 
 const singleTicket = computed(() => {
-  const findSingleTicket = ticket.value.find((i) => {
-    console.log(i.ticketId);
+  const findSingleTicket = ticket.value.find((i:any) => {
+  
     return i.ticketId === +route.params.ticketId;
   });
 

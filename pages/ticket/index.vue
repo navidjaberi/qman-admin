@@ -1,6 +1,6 @@
 <template>
   <base-layout title="تیکت" />
-  <div class="mt-8">
+  <div class="mt-8 px-7">
     <div
       class="border-1 border-gray-200 bg-white border-solid rounded-lg flex justify-between align-center py-2 px-5"
     >
@@ -86,7 +86,7 @@
         </v-btn>
       </div>
     </div>
-    <BaseTable title="تیکت های دریافتی" class="mt-4">
+    <BaseTable title="تیکت های دریافتی" class="my-6">
       <div
         class="grid grid-cols-8 text-center px-6 py-5 text-gray-400 justify-center"
       >

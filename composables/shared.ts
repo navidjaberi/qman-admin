@@ -1,9 +1,8 @@
 export const useShared = () => {
   const { showAlert } = useAlert();
 
-
   const years = Array.from({ length: 100 }, (_, i) => 1400 - i);
-  const months = [
+  const months = ref([
     { text: "فروردین", value: 1 },
     { text: "اردیبهشت", value: 2 },
     { text: "خرداد", value: 3 },
@@ -16,7 +15,7 @@ export const useShared = () => {
     { text: "دی", value: 10 },
     { text: "بهمن", value: 11 },
     { text: "اسفند", value: 12 },
-  ];
+  ]);
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const handelFiltersForQuery = (filters: any) => {
@@ -133,15 +132,33 @@ export const useShared = () => {
     return str;
   }
   function toFarsiNumber(n) {
-    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    const farsiDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
     return n
       .toString()
-      .split('')
-      .map(x => farsiDigits[x])
-      .join('');
+      .split("")
+      .map((x) => farsiDigits[x])
+      .join("");
   }
+
+  const getCurrentDate = () => {
+    const year = ref(1403);
+    const month = ref(6);
+    const day = ref(1);
+    const date = new Date().toLocaleDateString("fa-IR").split("/");
+    year.value = date[0];
+    month.value = convertPersianNumberToEnglish(date[1]);
+    day.value = date[2];
+    const currentDayInWeek = getDay(
+      convertPersianNumberToEnglish(year.value),
+      month.value,
+      convertPersianNumberToEnglish(day.value)
+    );
+    const currentMonth = months.value.find((i) => {
+      return i.value === +month.value;
+    });
+    return {dayInWeek:currentDayInWeek,dayInNumber:day.value, month:currentMonth.text, year:year.value};
+  };
   return {
-   
     years,
     months,
     days,
@@ -157,6 +174,7 @@ export const useShared = () => {
     toPersianDateTime,
     getDay,
     useToEnglishDigits,
-    toFarsiNumber
+    toFarsiNumber,
+    getCurrentDate,
   };
 };
