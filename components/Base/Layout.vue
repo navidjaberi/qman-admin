@@ -9,7 +9,6 @@
 
 <script setup>
 const { dayInWeek, dayInNumber, month, year } = useShared().getCurrentDate();
-
 const props = defineProps({
   title: String,
 });

@@ -4,6 +4,7 @@ type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refre
 interface _GlobalComponents {
       'BaseAlert': typeof import("../components/Base/Alert.vue")['default']
     'BaseBtn': typeof import("../components/Base/Btn.vue")['default']
+    'BaseCheckbox': typeof import("../components/Base/Checkbox.vue")['default']
     'BaseLayout': typeof import("../components/Base/Layout.vue")['default']
     'BaseTable': typeof import("../components/Base/Table.vue")['default']
     'NavbarNav': typeof import("../components/Navbar/Nav.vue")['default']
@@ -43,6 +44,7 @@ interface _GlobalComponents {
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
       'LazyBaseAlert': typeof import("../components/Base/Alert.vue")['default']
     'LazyBaseBtn': typeof import("../components/Base/Btn.vue")['default']
+    'LazyBaseCheckbox': typeof import("../components/Base/Checkbox.vue")['default']
     'LazyBaseLayout': typeof import("../components/Base/Layout.vue")['default']
     'LazyBaseTable': typeof import("../components/Base/Table.vue")['default']
     'LazyNavbarNav': typeof import("../components/Navbar/Nav.vue")['default']
@@ -88,6 +90,7 @@ declare module 'vue' {
 
 export const BaseAlert: typeof import("../components/Base/Alert.vue")['default']
 export const BaseBtn: typeof import("../components/Base/Btn.vue")['default']
+export const BaseCheckbox: typeof import("../components/Base/Checkbox.vue")['default']
 export const BaseLayout: typeof import("../components/Base/Layout.vue")['default']
 export const BaseTable: typeof import("../components/Base/Table.vue")['default']
 export const NavbarNav: typeof import("../components/Navbar/Nav.vue")['default']
@@ -127,6 +130,7 @@ export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 export const LazyBaseAlert: typeof import("../components/Base/Alert.vue")['default']
 export const LazyBaseBtn: typeof import("../components/Base/Btn.vue")['default']
+export const LazyBaseCheckbox: typeof import("../components/Base/Checkbox.vue")['default']
 export const LazyBaseLayout: typeof import("../components/Base/Layout.vue")['default']
 export const LazyBaseTable: typeof import("../components/Base/Table.vue")['default']
 export const LazyNavbarNav: typeof import("../components/Navbar/Nav.vue")['default']

@@ -50,10 +50,9 @@
             variant="outlined"
             color="secondary-main"
             class="!h-8 !font-normal"
-         
             append-icon="mdi-chevron-down"
           >
-          {{  dayInNumber + "" + month + " " + year }}
+          {{  dayInNumber + "" + month + "" + year }}
           </v-btn>
           <div class="text-center">
             <v-menu

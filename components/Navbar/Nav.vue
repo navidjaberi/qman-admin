@@ -72,7 +72,7 @@ const items = ref<Items[]>([
   {
     title: "مدیران",
     id: 8,
-    tab: "/management",
+    tab: "/admins",
     icon: "solar:shield-user-outline",
     value: "",
   },
