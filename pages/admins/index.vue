@@ -1,6 +1,5 @@
 <template>
-  <base-layout title="مدیران پنل" />
-
+  <base-layout title="مدیران پنل" />۵۴۵
   <div class="mt-20 px-8 mb-8">
     <BaseTable title="ادمین ها" class="mt-4">
       <template #btn>
@@ -60,7 +59,6 @@
                       variant="outlined"
                       color="secondary-main"
                       class="!h-8 !font-normal px-2"
-                      
                       @click="isActive.value = false"
                     >
                       انصراف
