@@ -9,6 +9,7 @@
             variant="outlined"
             color="secondary-main"
             class="!h-8 !font-normal"
+            @click="$router.go(-1)"
           >
             بازگشت
           </v-btn>
