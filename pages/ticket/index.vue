@@ -86,7 +86,7 @@
         </v-btn>
       </div>
     </div>
-    <BaseTable title="تیکت های دریافتی" class="my-6">
+    <BaseTable title="تیکت های دریافتی" class="my-6 relative">
       <div
         class="grid grid-cols-8 text-center px-6 py-5 text-gray-400 justify-center"
       >
@@ -98,46 +98,48 @@
         <p>شناسه تیکت</p>
       </div>
       <v-divider thickness="2" class="mx-6" />
-      <div
-        class="grid grid-cols-8 text-center px-6 py-1 mt-4 place-items-center"
-        v-for="i in ticket"
-        :key="i.ticketId"
-      >
-        <v-checkbox hide-details class="text-gray-600" />
-        <p>{{ i.cafeId }}</p>
-        <p>{{ i.name }}</p>
-        <div class="bg-[#FFDAE1] w-full rounded-md">
-          <p class="font-regular py-1 text-error-dark">{{ i.status }}</p>
-        </div>
-        <p>{{ i.date }}</p>
-        <p>{{ i.time }}</p>
-        <p>{{ i.ticketId }}</p>
-        <v-btn
-          variant="outlined"
-          color="primary-main"
-          class="w-5 !mx-auto"
-          size="small"
-          @click="ticketView(i.ticketId)"
+      <div class="min-h-[500px] pb-26">
+        <div
+          class="grid grid-cols-8 text-center px-6 py-1 mt-4 place-items-center"
+          v-for="i in ticket"
+          :key="i.ticketId"
         >
-          <Icon name="solar:eye-outline" size="1.5rem"></Icon>
-        </v-btn>
-      </div>
-      <div class="text-center">
-        <v-container>
-          <v-row justify="center">
-            <v-col cols="5">
-              <v-container class="max-width !text-xs">
-                <v-pagination
-                  v-model="page"
-                  :length="15"
-                  class="my-4 !text-xs"
-                  size="small"
-                  variant="text"
-                ></v-pagination>
-              </v-container>
-            </v-col>
-          </v-row>
-        </v-container>
+          <v-checkbox hide-details class="text-gray-600" />
+          <p>{{ i.cafeId }}</p>
+          <p>{{ i.name }}</p>
+          <div class="bg-[#FFDAE1] w-full rounded-md">
+            <p class="font-regular py-1 text-error-dark">{{ i.status }}</p>
+          </div>
+          <p>{{ i.date }}</p>
+          <p>{{ i.time }}</p>
+          <p>{{ i.ticketId }}</p>
+          <v-btn
+            variant="outlined"
+            color="primary-main"
+            class="w-5 !mx-auto"
+            size="small"
+            @click="ticketView(i.ticketId)"
+          >
+            <Icon name="solar:eye-outline" size="1.5rem"></Icon>
+          </v-btn>
+        </div>
+        <div class="text-center absolute w-full bottom-0 mx-auto">
+          <v-container>
+            <v-row justify="center">
+              <v-col cols="5">
+                <v-container class="max-width !text-xs">
+                  <v-pagination
+                    v-model="page"
+                    :length="15"
+                    class="my-4 !text-xs"
+                    size="small"
+                    variant="text"
+                  ></v-pagination>
+                </v-container>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
       </div>
     </BaseTable>
   </div>

@@ -122,7 +122,7 @@
         </div>
       </div>
     </div>
-    <BaseTable title="پرداختی کسب و کارها" class="mt-4">
+    <BaseTable title="پرداختی کسب و کارها" class="mt-4 relative">
       <div
         class="grid grid-cols-7 text-center px-6 py-5 text-gray-400 justify-center"
       >
@@ -135,6 +135,8 @@
         <p>شماره رهگیری</p>
       </div>
       <v-divider thickness="2" class="mx-6" />
+      <div class="min-h-[500px] pb-26">
+
       <div
         class="grid grid-cols-7 text-center px-6 py-4 place-items-center"
         v-for="i in tickets"
@@ -150,7 +152,7 @@
         <p>{{ i.membership }}</p>
         <p>{{ i.interception }}</p>
       </div>
-      <div class="text-center">
+      <div class="text-center absolute w-full bottom-0 mx-auto">
         <v-container>
           <v-row justify="center">
             <v-col cols="5">
@@ -166,6 +168,7 @@
             </v-col>
           </v-row>
         </v-container>
+      </div>
       </div>
     </BaseTable>
   </div>

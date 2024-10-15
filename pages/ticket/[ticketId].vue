@@ -1,7 +1,7 @@
 <template>
   <base-layout title="تیکت" />
   <div
-    class="border-1 border-gray-200 bg-white border-solid rounded-lg text-sm  mt-30"
+    class="border-1 border-gray-200 bg-white border-solid rounded-lg text-sm mt-30"
   >
     <div class="flex justify-between px-4">
       <div class="flex align-center gap-5">
@@ -106,7 +106,7 @@
       ></v-textarea>
     </div>
     <div class="px-5">
-      <v-form class="mt-10" @submit.prevent="submitTicketResponse">
+      <v-form class="mt-10" @submit.prevent="submitTicketResponse">q
         <v-textarea
           label="پاسخ:"
           placeholder="هنوز برای این تیکت پاسخی ارسال نشده است.     "
@@ -159,14 +159,12 @@ const ticket = computed(() => {
 });
 
 const singleTicket = computed(() => {
-  const findSingleTicket = ticket.value.find((i:any) => {
-  
+  const findSingleTicket = ticket.value.find((i: any) => {
     return i.ticketId === +route.params.ticketId;
   });
 
   return findSingleTicket;
 });
-
 
 const changeTicketStatus = ref();
 const ticketResponse = ref("");
