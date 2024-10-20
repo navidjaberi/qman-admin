@@ -20,19 +20,55 @@
         </p>
       </template>
     </v-list-item>
-    <div class="h-[30%] flex align-end">
-      <v-list-item class="!text-red-500 rounded-lg w-11/12 mb-3" :height="44">
-        <template #prepend>
-          <Icon name="ic:baseline-log-out" size="1.5rem" class="mr-5" />
+    <div class="h-[25%] flex align-end">
+      <v-dialog max-width="350">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-list-item
+            class="!text-red-500 rounded-lg w-full mb-3"
+            :height="44"
+            v-bind="activatorProps"
+          >
+            <template #prepend>
+              <Icon name="ic:baseline-log-out" size="1.5rem" class="mr-5" />
+            </template>
+            <template #title>
+              <p class="text-[13px] font-semibold mx-2">خروج</p>
+            </template>
+          </v-list-item>
         </template>
-        <template #title>
-          <p class="text-[13px] font-semibold mx-2">خروج</p>
+
+        <template v-slot:default="{ isActive }">
+          <v-card class="relative pa-4" rounded="lg">
+            <h4 class="text-center text-primary-main mt-4">
+              می‌خواهید از حساب خارج شوید؟
+            </h4>
+
+            <div
+              class="flex align-center mt-10 mb-4 justify-center px-10 w-3/4 mx-auto gap-3"
+            >
+              <BaseBtn
+                text="خیر"
+                class="!px-10"
+                @click="isActive.value = false"
+              />
+              <v-btn
+                variant="outlined"
+                color="secondary-main"
+                class="!h-8 !font-normal px-2"
+                @click="logout"
+              >
+                بله
+              </v-btn>
+            </div>
+          </v-card>
         </template>
-      </v-list-item>
+      </v-dialog>
     </div>
   </v-list>
 </template>
 <script setup lang="ts">
+import { useRegister } from "~/store/register";
+
 interface Items {
   title: string;
   id: number;
@@ -43,10 +79,9 @@ interface Items {
 const props = defineProps({
   value: String,
 });
-
+const store = useRegister();
 const emit = defineEmits(["activeItem"]);
 const route = useRoute();
-
 const items = ref<Items[]>([
   {
     title: "پیشخوان",
@@ -83,7 +118,13 @@ const items = ref<Items[]>([
     icon: "solar:clipboard-text-outline",
     value: "",
   },
-  { title: "کسب و کارها", id: 5, tab: "/businesses", icon: "ph:buildings", value: "" },
+  {
+    title: "کسب و کارها",
+    id: 5,
+    tab: "/businesses",
+    icon: "ph:buildings",
+    value: "",
+  },
   {
     title: "ارتباط سریع",
     id: 9,
@@ -101,6 +142,9 @@ const items = ref<Items[]>([
 ]);
 const activeItemClick = (val: string) => {
   emit("activeItem", val);
+};
+const logout = () => {
+  store.logout();
 };
 </script>
 

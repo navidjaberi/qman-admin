@@ -20,6 +20,9 @@
 import RegisterLoginPassword from "~/components/Register/LoginPassword.vue";
 import RegisterLoginNumber from "~/components/Register/LoginNumber.vue";
 import RegisterOtp from "~/components/Register/Otp.vue";
+definePageMeta({
+  layout:''
+})
 const tabs = ref([RegisterLoginNumber, RegisterOtp, RegisterLoginPassword]);
 const currentTab = ref(0);
 const loginNumber = ref(true);

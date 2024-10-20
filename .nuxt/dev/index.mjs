@@ -285,6 +285,12 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/": {
+        "redirect": {
+          "to": "/register",
+          "statusCode": 307
+        }
+      },
       "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"

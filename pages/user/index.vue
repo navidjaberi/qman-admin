@@ -28,16 +28,29 @@
         class="flex text-black align-center gap-3 py-5 justify-between custom-input__field"
       >
         <div>
-          <div class="relative">
-            <v-avatar size="70px" class="!border-2 !border-success-main">
-              <v-img
-                alt="Avatar"
-                src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
-              ></v-img>
-            </v-avatar>
-            <div
-              class="size-4 rounded-full bg-success-main absolute left-0 bottom-1"
-            />
+          <div class="flex justify-center">
+            <div class="relative">
+              <v-avatar size="70px" class="!border-2 !border-success-main">
+                <v-img
+                  alt="Avatar"
+                  src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+                ></v-img>
+              </v-avatar>
+              <div
+                class="size-4 rounded-full bg-success-main absolute left-0 bottom-1"
+              />
+            </div>
+          </div>
+          <div class="mt-2 px-5" v-if="!inputFieldToggle">
+            <BaseBtn text="افزودن عکس" class="!px-4 !text-xs" />
+            <v-btn
+              variant="outlined"
+              color="secondary-main"
+              rounded="lg"
+              block
+              class="mt-1 !text-xs"
+              >حذف عکس</v-btn
+            >
           </div>
         </div>
         <div class="w-full px-5">
@@ -76,7 +89,76 @@
           ></v-text-field>
         </div>
         <div class="w-full px-5">
+          <div>
+            <v-dialog max-width="250">
+              <template v-slot:activator="{ props: activatorProps }">
+                <v-btn
+                  class="!bg-error-light !text-error-dark"
+                  block
+                  v-if="!inputFieldToggle"
+                  flat
+                  v-bind="activatorProps"
+                  >تغییر رمز عبور</v-btn
+                >
+              </template>
+
+              <template v-slot:default="{ isActive }">
+                <v-card class="relative pa-4" rounded="lg">
+                  <h4 class="text-center">تغییر رمز عبور</h4>
+                  <Icon
+                    name="solar:close-circle-outline"
+                    size="1.7rem"
+                    class="cursor-pointer text-gray-400 absolute left-3 top-2"
+                    @click="isActive.value = false"
+                  />
+                  <v-form class="mt-5">
+                    <div class="mt-2">
+                      <p class="text-center text-sm">
+                        جهت تغییر رمز عبور فرم های زیر را پر کنید
+                      </p>
+                      <div class="mt-5">
+                        <v-text-field
+                          label="رمز عبور جدید را وارد نمائید"
+                          variant="outlined"
+                          density="compact"
+                          color="#979797"
+                          class="!text-[#979797]"
+                          hide-details
+                          type="password"
+                        ></v-text-field>
+                      </div>
+                      <div class="mt-5">
+                        <v-text-field
+                        type="password"
+
+                          label="رمز عبور جدید را تکرار نمائید"
+                          variant="outlined"
+                          density="compact"
+                          color="#979797"
+                          class="!text-[#979797]"
+                          hide-details
+                        ></v-text-field>
+                      </div>
+                    </div>
+                    <div class="flex gap-1 align-center mt-16 justify-center px-10">
+                      <BaseBtn text="ثبت نهایی"  />
+                      <v-btn
+                        variant="outlined"
+                        color="secondary-main"
+                        class="!h-8 !font-normal px-2"
+                        @click="isActive.value = false"
+                      >
+                        انصراف
+                      </v-btn>
+                    </div>
+                  </v-form>
+                </v-card>
+              </template>
+            </v-dialog>
+          </div>
+
           <v-text-field
+            v-if="inputFieldToggle"
             label="رمز عبور"
             :variant="inputFieldToggle ? 'solo' : 'outlined'"
             flat
@@ -99,7 +181,12 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <BaseCheckbox :value="i.value" :checked="i.access" />
+            <v-checkbox
+              v-model="i.access"
+              color="primary-main"
+              hide-details
+              disabled
+            />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش تیکت:</h4>
@@ -109,7 +196,12 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <BaseCheckbox :value="i.value" :checked="i.access" />
+            <v-checkbox
+              v-model="i.access"
+              color="primary-main"
+              hide-details
+              disabled
+            />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش پیشخوان:</h4>
@@ -119,14 +211,24 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <BaseCheckbox :value="i.value" :checked="i.access" />
+            <v-checkbox
+              v-model="i.access"
+              color="primary-main"
+              hide-details
+              disabled
+            />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش مالی:</h4>
         <div class="grid grid-cols-6 gap-2 mt-4">
           <div v-for="i in userInfo.finance" class="flex align-center gap-3">
             <p>{{ i.title }}</p>
-            <BaseCheckbox :value="i.value" :checked="i.access" />
+            <v-checkbox
+              v-model="i.access"
+              color="primary-main"
+              hide-details
+              disabled
+            />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش مدیران:</h4>
@@ -136,7 +238,12 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <BaseCheckbox :value="i.value" :checked="i.access" />
+            <v-checkbox
+              v-model="i.access"
+              color="primary-main"
+              hide-details
+              disabled
+            />
           </div>
         </div>
       </div>
@@ -144,7 +251,7 @@
   </div>
 </template>
 <script setup>
-const inputFieldToggle = ref(false);
+const inputFieldToggle = ref(true);
 const userInfo = ref({
   name: "محمدعلی یاری آذر",
   phone: "09126625465",

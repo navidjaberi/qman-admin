@@ -122,7 +122,9 @@ export default defineNuxtConfig({
       ],
     },
   },
-
+  routeRules: {
+    "/": { redirect: "/register" },
+  },
   modules: [
     // uno css
     "vuetify-nuxt-module", // nuxt-icon

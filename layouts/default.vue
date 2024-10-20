@@ -27,7 +27,7 @@ const getActiveItem = (i) => {
             </div>
             <NavbarNav
               direction="vertical"
-              class="my-2 !mt-10 text-black"
+              class="my-2 !mt-5 text-black"
               :value="currentTab"
               @active-item="getActiveItem"
             />
