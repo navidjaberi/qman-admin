@@ -85,6 +85,13 @@ const items = ref<Items[]>([
   },
   { title: "کسب و کارها", id: 5, tab: "/businesses", icon: "ph:buildings", value: "" },
   {
+    title: "ارتباط سریع",
+    id: 9,
+    tab: "/contact",
+    icon: "solar:phone-calling-outline",
+    value: "",
+  },
+  {
     title: "حساب کاربری",
     id: 6,
     tab: "/user",

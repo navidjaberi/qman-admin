@@ -47,23 +47,31 @@ a {
   display: none !important;
 }
 .filter {
-  .v-slide-group__content{
+  .v-slide-group__content {
     justify-content: right !important;
   }
 }
-.v-field--variant-outlined{
-  background-color: white!important;
+.v-field--variant-outlined {
+  background-color: white !important;
 }
-.v-pagination__item--is-active{
-  background-color:#4060E3!important;
+.v-pagination__item--is-active {
+  background-color: #4060e3 !important;
   color: white !important;
   border-radius: 5px;
 }
-.custom-input{
-  .v-field--disabled{
-    opacity: 1!important;
-    background-color: #EFF2FF!important;
-    outline-color: #D6D6D6!important;
-    border: 1px solid #D6D6D6!important;
-    }
+.custom-input {
+  .v-field--disabled {
+    opacity: 1 !important;
+    background-color: #eff2ff !important;
+    outline-color: #d6d6d6 !important;
+    border: 1px solid #d6d6d6 !important;
+  }
+}
+.custom-input__field {
+  .v-field--disabled {
+    opacity: 0.6 !important;
+    background-color: #d6d6d6 !important;
+    outline-color: #d6d6d6 !important;
+    border: 1px solid #d6d6d6 !important;
+  }
 }

@@ -1,7 +1,7 @@
 <template>
   <label class="custom-label flex p-2">
     <div
-      class="shadow w-5 h-5 p-1 flex justify-center items-center mr-2 rounded-md"
+      class="shadow w-5 h-5 p-1 flex justify-center items-center mr-2 rounded-md cursor-pointer"
       :class="[checked ? 'bg-primary-main' : 'bg-white']"
     >
       <input
