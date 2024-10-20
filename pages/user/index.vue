@@ -129,8 +129,7 @@
                       </div>
                       <div class="mt-5">
                         <v-text-field
-                        type="password"
-
+                          type="password"
                           label="رمز عبور جدید را تکرار نمائید"
                           variant="outlined"
                           density="compact"
@@ -140,8 +139,10 @@
                         ></v-text-field>
                       </div>
                     </div>
-                    <div class="flex gap-1 align-center mt-16 justify-center px-10">
-                      <BaseBtn text="ثبت نهایی"  />
+                    <div
+                      class="flex gap-1 align-center mt-16 justify-center px-10"
+                    >
+                      <BaseBtn text="ثبت نهایی" />
                       <v-btn
                         variant="outlined"
                         color="secondary-main"

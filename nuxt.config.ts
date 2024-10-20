@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+import type { NuxtPage } from "nuxt/schema";
 
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
@@ -125,6 +126,7 @@ export default defineNuxtConfig({
   routeRules: {
     "/": { redirect: "/register" },
   },
+
   modules: [
     // uno css
     "vuetify-nuxt-module", // nuxt-icon
@@ -146,6 +148,27 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@pinia/nuxt",
   ],
+  hooks: {
+    "pages:extend"(pages) {
+      function setMiddleware(pages: NuxtPage[]) {
+        for (const page of pages) {
+          if (page.path === "/register" || page.path === "/register/") {
+            page.meta ||= {};
+            page.meta.middleware = ["is-logged"];
+          } else {
+            page.meta ||= {};
+
+            page.meta.middleware = ["is-logged","not-logged"];
+          }
+
+          if (page.children) {
+            setMiddleware(page.children);
+          }
+        }
+      }
+      setMiddleware(pages);
+    },
+  },
   devServer: {
     port: 3008,
     // host:'0.0.0.0'
