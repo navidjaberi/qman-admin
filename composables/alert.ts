@@ -4,7 +4,7 @@ export const useAlert = () => {
   // state
   const alert = useState("alert", () => ({
     type: '',
-    timeout: 10000,
+    timeout: 100000,
   }));
 
   //actions

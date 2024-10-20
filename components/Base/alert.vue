@@ -6,13 +6,12 @@
       position="fixed"
       content-class="top-0 !bottom-unset border-2 !border-success-dark border-solid"
       :content-class="[alertProperty.color]"
-      class="!w-4/5 mx-auto "
+      class="!w-4/5 mx-auto"
       variant="flat"
       flat
       height="72px"
-
     >
-      <div class="flex align-center gap-4 " >
+      <div class="flex align-center gap-4">
         <div
           class="border-[1.5px] border-solid size-8 flex justify-center align-center rounded-full"
           :class="[alertProperty.border]"
@@ -46,13 +45,13 @@
 <script setup>
 const { alert, hideAlert, showAlertVar } = useAlert();
 const alertProperty = computed(() => {
-  if (alert.value.type === "success") {
+  if (alert.value.type === 'success') {
     return {
-      color:"!bg-success-light",
-      border:"!border-success-dark",
-      text:"!text-success-dark",
-      icon:"solar:check-circle-outline",
-      message:"با موفقیت انجام شد.",
+      color: "!bg-success-light",
+      border: "!border-success-dark",
+      text: "!text-success-dark",
+      icon: "solar:check-circle-outline",
+      message: "با موفقیت انجام شد.",
     };
   } else if (alert.value.type == "warning") {
     return {

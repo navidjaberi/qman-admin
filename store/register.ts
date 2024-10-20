@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 export const useRegister = defineStore("register", () => {
-  const isLoggedIn = ref(false);
+  const isLoggedIn = ref<null | boolean>(null);
   const isLoggedInGet = computed(() => {
     return isLoggedIn.value;
   });

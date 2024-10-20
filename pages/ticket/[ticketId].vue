@@ -106,7 +106,7 @@
       ></v-textarea>
     </div>
     <div class="px-5">
-      <v-form class="mt-10" @submit.prevent="submitTicketResponse">q
+      <v-form class="mt-10" @submit.prevent="submitTicketResponse">
         <v-textarea
           label="پاسخ:"
           placeholder="هنوز برای این تیکت پاسخی ارسال نشده است.     "
@@ -148,7 +148,7 @@ import { useTicketStore } from "~/store/ticket";
 const { getTickets } = useTicketStore();
 const route = useRoute();
 const menu = ref(false);
-alert.value.type = "success";
+alert.value.type === 'success';
 const ticketText = ref(`سلام تیم پشتیبانی،
 من با یک مشکل در وبسایت شما مواجه شده‌ام. صفحات وبسایت به‌درستی بارگذاری نمی‌شوند و به‌جای محتوا، تنها یک صفحه خالی نمایش داده می‌شود. این مشکل از دیروز شروع شده و در مرورگرهای مختلف نیز تست کرده‌ام، اما نتیجه‌ای نگرفته‌ام.
 لطفاً لطفاً به من در حل این مشکل کمک کنید. آیا نیاز به اطلاعات بیشتری دارم؟

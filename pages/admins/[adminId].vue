@@ -79,7 +79,7 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <v-checkbox :value="i.value" :checked="i.access" />
+            <v-checkbox v-model="i.access" color="primary-main" hide-details />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش تیکت:</h4>
@@ -89,7 +89,7 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <v-checkbox :value="i.value" :checked="i.access" />
+            <v-checkbox v-model="i.access" color="primary-main" hide-details />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش پیشخوان:</h4>
@@ -99,14 +99,14 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <v-checkbox :value="i.value" :checked="i.access" />
+            <v-checkbox v-model="i.access" color="primary-main" hide-details />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش مالی:</h4>
         <div class="grid grid-cols-6 gap-2 mt-4">
           <div v-for="i in adminAccess.finance" class="flex align-center gap-3">
             <p>{{ i.title }}</p>
-            <v-checkbox :value="i.value" :checked="i.access" />
+            <v-checkbox v-model="i.access" color="primary-main" hide-details />
           </div>
         </div>
         <h4 class="mt-4">جزئیات بخش مدیران:</h4>
@@ -116,7 +116,7 @@
             class="flex align-center gap-3 justify-between"
           >
             <p>{{ i.title }}</p>
-            <v-checkbox :value="i.value" :checked="i.access" />
+            <v-checkbox v-model="i.access" color="primary-main" hide-details />
           </div>
         </div>
       </div>

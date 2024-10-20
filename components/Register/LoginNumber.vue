@@ -4,7 +4,7 @@
       برای ورود شماره تلفن همراه خود را وارد نمائید
     </h4>
     <v-form class="mt-10 px-5">
-      <div class="px-20">
+      <div class="px-24 w-1/3 mx-auto">
         <v-text-field
           label="شماره همراه خود را وارد نمائید"
           variant="outlined"

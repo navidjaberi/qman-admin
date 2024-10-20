@@ -8,7 +8,7 @@
         @loginPassword="loginNumber = false"
         @loginNumber="loginNumber=true"
         @editPhoneNum="currentTab=0"
-        @loggedIn="$router.push('/dashboard')"
+        @loggedIn="loggedIn"
       />
     </div>
     <div>
@@ -20,12 +20,19 @@
 import RegisterLoginPassword from "~/components/Register/LoginPassword.vue";
 import RegisterLoginNumber from "~/components/Register/LoginNumber.vue";
 import RegisterOtp from "~/components/Register/Otp.vue";
+import  { useRegister } from "~/store/register";
 definePageMeta({
-  layout:''
+  layout:'' 
 })
+const router=useRouter()
+const store=useRegister()
 const tabs = ref([RegisterLoginNumber, RegisterOtp, RegisterLoginPassword]);
 const currentTab = ref(0);
 const loginNumber = ref(true);
+const loggedIn=()=>{
+  store.login()
+  router.push('/dashboard')
+}
 </script>
 
 <style></style>
